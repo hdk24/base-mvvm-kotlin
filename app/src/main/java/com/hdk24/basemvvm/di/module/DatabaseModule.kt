@@ -1,7 +1,6 @@
 package com.hdk24.basemvvm.di.module
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.hdk24.basemvvm.data.local.AppDatabase
 import com.hdk24.basemvvm.data.local.dao.MovieDao

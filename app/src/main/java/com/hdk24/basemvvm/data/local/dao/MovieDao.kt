@@ -1,6 +1,7 @@
 package com.hdk24.basemvvm.data.local.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.hdk24.basemvvm.data.local.entity.MovieEntity
 import io.reactivex.Single
 

@@ -1,10 +1,10 @@
 package com.hdk24.basemvvm.presentation.base
 
-import android.net.Network
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModel
 import com.hdk24.basemvvm.data.remote.StatusCode
 import com.hdk24.basemvvm.domain.exception.Failure
-import com.hdk24.basemvvm.presentation.exception.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -16,10 +16,6 @@ import io.reactivex.disposables.Disposable
 abstract class BaseViewModel : ViewModel() {
 
     protected var lastDisposable: Disposable? = null
-
-    private val _networkState = MutableLiveData<NetworkState>()
-
-    val networkState: LiveData<NetworkState> get() = _networkState
 
     val compositeDisposable = CompositeDisposable()
 
@@ -45,18 +41,13 @@ abstract class BaseViewModel : ViewModel() {
     /**
      * handle error request on throwable as Failure
      * @param throwable wrapp with failure
+     * @return failure throwable
      */
-    fun handleError(throwable: Throwable?) {
-        val error = if(throwable is Failure){
-            NetworkState.error(throwable)
-        } else {
-            NetworkState.error(Failure(StatusCode.UNKNOWN_ERROR,"There is unknown error"))
-        }
-        _networkState.postValue(error)
-    }
 
-    fun networkState(state:NetworkState){
-        _networkState.postValue(state)
+    fun handleNetworkError(throwable: Throwable?): Failure {
+        return if (throwable is Failure) throwable
+        else Failure(StatusCode.UNKNOWN_ERROR, "There is unknown error")
+
     }
 
     /**

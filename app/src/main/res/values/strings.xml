@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_try_again">Try Again</string>
+    <string name="message_empty_movie">No movie found</string>
+    <string name="desc_empty_movie">Oops, we can\'t find your movie.</string>
+    <string name="message_no_connection">No Connection</string>
+    <string name="desc_no_connection">Slow or no internet connection\nPlease check your connection settings.</string>
+    <string name="label_oops">Oops,</string>
+    <string name="desc_unknown_error">An unknown error occurred\nMay be server under maintenance.</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.hdk24.basemvvm.presentation.base
 
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil

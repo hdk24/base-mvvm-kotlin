@@ -2,15 +2,10 @@ package com.hdk24.basemvvm.data.repository
 
 import com.hdk24.basemvvm.data.local.AppDatabase
 import com.hdk24.basemvvm.data.mapper.MovieMapper
-import com.hdk24.basemvvm.data.remote.StatusCode
 import com.hdk24.basemvvm.data.remote.api.MovieAPI
-import com.hdk24.basemvvm.data.remote.base.ErrorApiHandler
 import com.hdk24.basemvvm.data.remote.base.ErrorNetworkHandler
-import com.hdk24.basemvvm.domain.exception.Failure
 import com.hdk24.basemvvm.domain.repository.MovieRepository
 import com.hdk24.basemvvm.presentation.model.Movie
-import com.hdk24.basemvvm.utils.AppLogger
-import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 

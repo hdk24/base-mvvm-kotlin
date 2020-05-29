@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="showLoading" type="Boolean" />
+        <variable name="showError" type="Boolean" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:visibility="@{showLoading?View.VISIBLE : View.INVISIBLE, default=visible}" />
+
+        <TextView
+            android:id="@+id/footerError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:padding="8dp"
+            android:text="Load failed. Tap to retry."
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="14sp"
+            android:visibility="@{showError?View.VISIBLE : View.INVISIBLE, default=invisible}" />
+
+    </FrameLayout>
+</layout>

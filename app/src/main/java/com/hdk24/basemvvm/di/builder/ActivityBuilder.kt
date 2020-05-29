@@ -1,6 +1,7 @@
 package com.hdk24.basemvvm.di.builder
 
 import com.hdk24.basemvvm.ui.MainActivity
+import com.hdk24.basemvvm.ui.onboard.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,6 +12,9 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class ActivityBuilder {
+
+    @ContributesAndroidInjector
+    abstract fun contributesSplashActivity(): SplashActivity
 
     @ContributesAndroidInjector
     abstract fun contributesMainActivity(): MainActivity

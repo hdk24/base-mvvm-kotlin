@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hdk24.basemvvm.domain.repository.MovieRepository
 import com.hdk24.basemvvm.domain.utils.SchedulerProvider
 import com.hdk24.basemvvm.presentation.base.BaseViewModel
-import com.hdk24.basemvvm.presentation.exception.NetworkState
+import com.hdk24.basemvvm.presentation.common.ResultState
 import com.hdk24.basemvvm.presentation.model.Movie
 import javax.inject.Inject
 
@@ -19,19 +19,20 @@ class MovieViewModel @Inject constructor(
     private val schedulers: SchedulerProvider
 ) : BaseViewModel() {
 
-    private val _movie = MutableLiveData<List<Movie>>()
+    private val _movie = MutableLiveData<ResultState<List<Movie>>>()
 
-    val movie: LiveData<List<Movie>> get() = _movie
+    val movie: LiveData<ResultState<List<Movie>>> get() = _movie
 
     internal fun fetchMovie(page: Int) {
-        networkState(NetworkState.LOADING)
+        _movie.postValue(ResultState.OnLoading())
         lastDisposable = repository.fetchMovie(page)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
             .subscribe({
-                _movie.postValue(it)
-                networkState(NetworkState.LOADED)
-            }, { handleError(it) })
+                _movie.postValue(ResultState.OnSuccess(it))
+            }, {
+                _movie.postValue(ResultState.OnError(handleNetworkError(it)))
+            })
 
         lastDisposable?.let { compositeDisposable.add(it) }
     }

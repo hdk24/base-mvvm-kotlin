@@ -1,15 +1,11 @@
 package com.hdk24.basemvvm.di.module
 
 import android.app.Application
-import android.content.Context
-import com.hdk24.basemvvm.App
-import com.hdk24.basemvvm.presentation.AppSchedulerProvider
 import com.hdk24.basemvvm.data.preference.PrefHelperImpl
-import com.hdk24.basemvvm.di.ApplicationContext
 import com.hdk24.basemvvm.di.scope.ApplicationScope
 import com.hdk24.basemvvm.domain.preference.PrefHelper
 import com.hdk24.basemvvm.domain.utils.SchedulerProvider
-import dagger.Binds
+import com.hdk24.basemvvm.presentation.AppSchedulerProvider
 import dagger.Module
 import dagger.Provides
 

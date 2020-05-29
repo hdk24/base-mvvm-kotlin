@@ -13,11 +13,29 @@
         android:orientation="vertical"
         android:layout_weight="1">
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"/>
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -26,11 +44,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"/>
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
-        <include layout="@layout/shimmer_movie_item"/>
+        <include layout="@layout/shimmer_movie_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"/>
     </LinearLayout>
 
 </LinearLayout>

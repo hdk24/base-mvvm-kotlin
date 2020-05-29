@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="android.view.View" />
         <variable
-            name="showLoading" type="Boolean" />
+            name="loadingState"
+            type="com.hdk24.basemvvm.presentation.common.LoadingState" />
+        <variable
+            name="showList"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerMovie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
@@ -19,26 +24,20 @@
             android:id="@+id/recyclerMovie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:spanCount="2"
+            android:visibility="@{showList ? View.VISIBLE : View.GONE, default=visible}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/view_movie_item"/>
+            app:spanCount="2"
+            tools:listitem="@layout/view_movie_item" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerContainer"
+        <com.hdk24.basemvvm.ui.widget.LoadingView
+            android:id="@+id/loadingView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{showLoading ? View.VISIBLE : View.GONE, default=gone}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <include layout="@layout/shimmer_movie_loading" />
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
+            app:layout="@layout/shimmer_movie_loading"
+            app:state="@{loadingState}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,10 +2,9 @@ package com.hdk24.basemvvm.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hdk24.basemvvm.presentation.ViewModelFactory
-import com.hdk24.basemvvm.di.scope.ActivityScoped
 import com.hdk24.basemvvm.di.scope.ApplicationScope
 import com.hdk24.basemvvm.di.scope.ViewModelKey
+import com.hdk24.basemvvm.presentation.ViewModelFactory
 import com.hdk24.basemvvm.presentation.viewModel.MovieViewModel
 import dagger.Binds
 import dagger.Module

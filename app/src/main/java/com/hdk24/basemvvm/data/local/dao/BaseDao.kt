@@ -1,7 +1,6 @@
 package com.hdk24.basemvvm.data.local.dao
 
 import androidx.room.*
-import com.hdk24.basemvvm.data.local.entity.MovieEntity
 
 /*
  *  Created by Hanantadk on 22/05/20.

@@ -7,9 +7,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.hdk24.basemvvm.R
 import com.hdk24.basemvvm.databinding.ActivityMainBinding
-import com.hdk24.basemvvm.presentation.base.BaseActivity
 import com.hdk24.basemvvm.extension.setVisibility
 import com.hdk24.basemvvm.extension.showBackArrow
+import com.hdk24.basemvvm.presentation.base.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(),
     NavController.OnDestinationChangedListener {

@@ -1,7 +1,6 @@
 package com.hdk24.basemvvm.domain.repository
 
 import com.hdk24.basemvvm.presentation.model.Movie
-import io.reactivex.Observable
 import io.reactivex.Single
 
 /*
