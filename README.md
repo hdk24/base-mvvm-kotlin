@@ -6,7 +6,7 @@ MVVM Architecture with Kotlin
 2. **di**: Dependency providing classes using Koin.
 3. **domain** : It contains all rules
 4. **presentation** : It contains all configuration which used in ui.
-5. **ui**: View classes along with their corresponding Presenters.
+5. **ui**: View classes along with their corresponding ViewModel in presentation.
 6. **utils**: Utility classes.
 
 #### Tech
