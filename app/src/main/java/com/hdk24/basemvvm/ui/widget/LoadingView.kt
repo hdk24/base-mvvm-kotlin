@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import com.hdk24.basemvvm.R
 import com.hdk24.basemvvm.data.remote.StatusCode
 import com.hdk24.basemvvm.presentation.common.LoadingState
+import com.hdk24.basemvvm.utils.NetworkUtils
 import kotlinx.android.synthetic.main.view_loading_item.view.*
 
 /*
@@ -43,7 +44,9 @@ class LoadingView @JvmOverloads constructor(
 
         LayoutInflater.from(context).inflate(R.layout.view_loading_item, this, true)
         View.inflate(context, loadingLayoutRes, shimmer_container)
-        btn_retry.setOnClickListener { onRefreshListener?.invoke() }
+        btn_retry.setOnClickListener {
+            if(NetworkUtils.isAvailable(context)) onRefreshListener?.invoke()
+        }
     }
 
     fun setState(loadingState: LoadingState? = LoadingState.OnLoading) {

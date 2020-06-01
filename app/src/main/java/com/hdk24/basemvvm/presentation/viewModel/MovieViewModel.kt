@@ -1,11 +1,15 @@
 package com.hdk24.basemvvm.presentation.viewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.hdk24.basemvvm.domain.repository.MovieRepository
 import com.hdk24.basemvvm.domain.utils.SchedulerProvider
 import com.hdk24.basemvvm.presentation.base.BaseViewModel
 import com.hdk24.basemvvm.presentation.common.ResultState
+import com.hdk24.basemvvm.presentation.dataSource.MovieDataFactory
+import com.hdk24.basemvvm.presentation.dataSource.MovieDataSource
 import com.hdk24.basemvvm.presentation.model.Movie
 import javax.inject.Inject
 
@@ -19,21 +23,32 @@ class MovieViewModel @Inject constructor(
     private val schedulers: SchedulerProvider
 ) : BaseViewModel() {
 
-    private val _movie = MutableLiveData<ResultState<List<Movie>>>()
+    private val _count = 20
 
-    val movie: LiveData<ResultState<List<Movie>>> get() = _movie
+    lateinit var movieList:  LiveData<PagedList<Movie>>
 
-    internal fun fetchMovie(page: Int) {
-        _movie.postValue(ResultState.OnLoading())
-        lastDisposable = repository.fetchMovie(page)
-            .subscribeOn(schedulers.io())
-            .observeOn(schedulers.ui())
-            .subscribe({
-                _movie.postValue(ResultState.OnSuccess(it))
-            }, {
-                _movie.postValue(ResultState.OnError(handleNetworkError(it)))
-            })
+    private val _movieFactory = MovieDataFactory(repository, compositeDisposable, schedulers)
 
-        lastDisposable?.let { compositeDisposable.add(it) }
+    private val config = PagedList.Config.Builder()
+        .setPageSize(_count)
+        .setInitialLoadSizeHint(_count * 2)
+        .setEnablePlaceholders(false)
+        .build()
+
+    fun fetchMovie() {
+        movieList = LivePagedListBuilder(_movieFactory, config).build()
+    }
+
+    fun getState(): LiveData<ResultState<List<Movie>>> = Transformations.switchMap<MovieDataSource,
+            ResultState<List<Movie>>>(_movieFactory.movieLiveData, MovieDataSource::state)
+
+    fun listIsEmpty(): Boolean = movieList.value?.isEmpty() ?: true
+
+    fun retry() {
+        _movieFactory.movieLiveData.value?.retry()
+    }
+
+    fun refresh() {
+        _movieFactory.movieLiveData.value?.invalidate()
     }
 }

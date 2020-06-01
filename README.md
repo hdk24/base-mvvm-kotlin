@@ -10,7 +10,7 @@ MVVM Architecture with Kotlin
 6. **utils**: Utility classes.
 
 #### Tech
-1. Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model)
+1. Jetpack Component (Data Binding, Lifecycles, Live Data, Navigation, View Model, Paging)
 2. MVVM Architecture
 3. Dagger2
 4. Shimmer

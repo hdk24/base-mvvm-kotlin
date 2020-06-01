@@ -18,7 +18,11 @@ class FooterHolder(private val binding: ViewFooterItemBinding) :
         fun create(retry: () -> Unit, parent: ViewGroup): BaseViewHolder<LoadingState> {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ViewFooterItemBinding.inflate(layoutInflater, parent, false)
-            binding.footerError.setOnClickListener { retry.invoke() }
+            binding.footerError.setOnClickListener {
+                binding.showLoading = true
+                binding.showError = false
+                retry.invoke()
+            }
             return FooterHolder(binding)
         }
     }

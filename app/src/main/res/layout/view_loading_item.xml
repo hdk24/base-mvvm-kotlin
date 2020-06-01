@@ -23,10 +23,11 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_marginBottom="16dp"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/illustration_no_connection"/>
 
         <TextView
             android:id="@+id/title_error"
