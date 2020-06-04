@@ -14,6 +14,7 @@ import com.hdk24.basemvvm.presentation.viewModel.MovieViewModel
 import com.hdk24.basemvvm.ui.adapter.MovieAdapter
 import com.hdk24.basemvvm.ui.widget.GridSpaceDecoration
 import com.hdk24.basemvvm.utils.AppLogger
+import kotlinx.android.synthetic.main.fragment_movie.*
 
 /**
  * A simple [Fragment] subclass.
@@ -41,6 +42,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding, MovieViewModel>() {
     }
 
     private fun initViews() {
+        binding.swipeRefresh.setOnRefreshListener { viewModel.refresh() }
         binding.loadingView.onRefreshListener = { onRefresh() }
     }
 
@@ -89,6 +91,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding, MovieViewModel>() {
         binding.showList = true
         adapter.setState(LoadingState.OnFinish)
         binding.loadingState = LoadingState.OnFinish
+        swipeRefresh.isRefreshing = false
     }
 
     private fun handleError(error: Failure) {

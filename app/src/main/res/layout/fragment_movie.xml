@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="loadingState"
             type="com.hdk24.basemvvm.presentation.common.LoadingState" />
+
         <variable
             name="showList"
             type="Boolean" />
@@ -20,17 +23,23 @@
         android:background="@color/colorBackground"
         tools:context=".ui.main.MainActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerMovie"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="@{showList ? View.VISIBLE : View.GONE, default=visible}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="2"
-            tools:listitem="@layout/view_movie_item" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{showList ? View.VISIBLE : View.GONE, default=visible}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="2"
+                tools:listitem="@layout/view_movie_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.hdk24.basemvvm.ui.widget.LoadingView
             android:id="@+id/loadingView"
